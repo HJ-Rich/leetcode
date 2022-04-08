@@ -66,3 +66,15 @@ class Solution {
         return true;
     }
 }
+
+// https://leetcode.com/problems/number-of-valid-words-in-a-sentence/discuss/1908274/Java-Regex
+// class Solution {
+//     public int countValidWords(String sentence) {
+//         String [] arr = sentence.trim().split("\\s+");
+//         int count=0;
+//         for(String str: arr){
+//             if(str.matches("[a-z]*([a-z]-[a-z])?[a-z]*[!.,]?")) count++;
+//         }
+//         return count;
+//     }
+// }
