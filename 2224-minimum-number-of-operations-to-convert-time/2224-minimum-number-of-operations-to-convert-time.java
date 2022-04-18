@@ -1,14 +1,9 @@
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-
 class Solution {
     public int convertTime(String current, String correct) {
         int answer = 0;
-        LocalTime parsedCurrent = LocalTime.parse(current, DateTimeFormatter.ofPattern("HH:mm"));
-        LocalTime parsedCorrect = LocalTime.parse(correct, DateTimeFormatter.ofPattern("HH:mm"));
 
-        int subMin = parsedCorrect.getMinute() - parsedCurrent.getMinute();
-        int subHour = parsedCorrect.getHour() - parsedCurrent.getHour();
+        int subMin = Integer.parseInt(correct.substring(3)) - Integer.parseInt(current.substring(3));
+        int subHour = Integer.parseInt(correct.substring(0, 2)) - Integer.parseInt(current.substring(0, 2));
         if (subMin < 0) {
             subMin += 60;
             subHour -= 1;
