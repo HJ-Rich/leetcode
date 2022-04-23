@@ -1,37 +1,40 @@
 class Solution {
     public boolean lemonadeChange(int[] bills) {
-        Map<Integer, Integer> map = new HashMap<>();
+        int five = 0;
+        int ten = 0;
+
         for (int bill : bills) {
             if (bill == 5) {
-                map.merge(5, 1, Integer::sum);
+                five++;
                 continue;
             }
 
             if (bill == 10) {
-                map.merge(10, 1, Integer::sum);
-                map.merge(5, -1, Integer::sum);
-                if (map.getOrDefault(5, 0) < 0) {
+                ten++;
+                five--;
+                if (five < 0) {
                     return false;
                 }
                 continue;
             }
 
             if (bill == 20) {
-                if (map.getOrDefault(10, 0) > 0) {
-                    map.merge(10, -1, Integer::sum);
+                if (ten > 0) {
+                    ten--;
                     bill -= 10;
                 }
 
                 while (bill > 5) {
-                    map.merge(5, -1, Integer::sum);
+                    five--;
                     bill -= 5;
                 }
 
-                if (map.getOrDefault(5, 0) < 0) {
+                if (five < 0) {
                     return false;
                 }
             }
         }
+        
         return true;
     }
 }
