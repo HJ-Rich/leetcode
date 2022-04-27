@@ -1,7 +1,13 @@
 class Solution {
     public int numOfStrings(String[] patterns, String word) {
-        return (int) Arrays.stream(patterns)
-            .filter(character -> word.contains(character))
-            .count();
+        int answer = 0;
+        
+        for (String s : patterns) {
+            if (word.contains(s)) {
+                answer++;
+            }
+        }
+        
+        return answer;
     }
 }
