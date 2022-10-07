@@ -6,8 +6,6 @@ class Solution:
                 digits.append(log)
             else:
                 letters.append(log)
-        print(digits)
-        print(letters)
 
         letters.sort(key=lambda x: (x.split()[1:], x.split()[0]))
         return letters + digits
