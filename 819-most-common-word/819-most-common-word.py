@@ -6,15 +6,12 @@ from typing import List
 class Solution:
     def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
         counter = defaultdict()  # 딕셔너리 선언
-        split = re.split('[! ?.,;\']', paragraph)
-        delimiters = ["!", "?", ".", ",", ";"]  # 단어 끝 지워야할 문자들
+        split = re.split('[! ?.,;\']', paragraph)  # multiple delimiter
 
         for word in split:  # 잘라둔 문자열 순회
-            if word == '':
+            if word == '': # 빈 문자열 건너뛰기
                 continue
             word = word.lower()  # 소문자로 바꾸고
-            if word[len(word) - 1] in delimiters:  # 단어 끝 지워야할 단어 있으면
-                word = word[:-1]  # 지우고
             if word not in banned:  # 제외 단어가 아니라면
                 if word not in counter:  # 키 없으면 0으로 세팅해주고
                     counter[word] = 0
@@ -27,4 +24,3 @@ class Solution:
                 count = v
                 answer = k
         return answer
-    
