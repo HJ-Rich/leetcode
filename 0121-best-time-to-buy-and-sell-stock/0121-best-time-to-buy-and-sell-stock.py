@@ -4,7 +4,8 @@ class Solution:
         max_profit = 0
 
         for p in prices:
-            min_price = min([min_price, p])
-            max_profit = max([p - min_price, max_profit])
+            min_price = p if p < min_price else min_price
+            profit = p - min_price
+            max_profit = profit if profit > max_profit else max_profit
 
         return max_profit
