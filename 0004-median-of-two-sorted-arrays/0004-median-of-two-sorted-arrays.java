@@ -1,9 +1,13 @@
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        final var nums = Stream.of(nums1, nums2)
-                .flatMap(array -> Arrays.stream(array).boxed())
-                .sorted()
-                .collect(Collectors.toList());
+        final var nums = new ArrayList<Integer>();
+        for (final int i : nums1) {
+            nums.add(i);
+        }
+        for (final int i : nums2) {
+            nums.add(i);
+        }
+        Collections.sort(nums);
 
         final var size = nums.size();
         final var index = nums.size() / 2;
