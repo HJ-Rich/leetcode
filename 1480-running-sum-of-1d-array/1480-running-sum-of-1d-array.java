@@ -1,17 +1,12 @@
 class Solution {
     public int[] runningSum(int[] nums) {
-        for (int i = 0; i < nums.length; i++) {
-            setValueByIndex(nums, i);
-        }
+        final var answer = new int[nums.length];
         
-        return nums;
-    }
-    
-    private int setValueByIndex(int[] array, int index) {
-        if (index == 0) {
-            return array[index];
+        answer[0] = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            answer[i] = answer[i - 1] + nums[i];
         }
 
-        return array[index] = array[index - 1] + array[index];
+        return answer;
     }
 }
