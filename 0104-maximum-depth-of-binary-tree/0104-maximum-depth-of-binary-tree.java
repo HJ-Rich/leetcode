@@ -22,7 +22,7 @@ class Solution {
         return Math.max(search(root.left, 1), search(root.right, 1));
     }
 
-    public int search(final TreeNode treeNode, final int depth) {
+    private int search(final TreeNode treeNode, final int depth) {
         if (treeNode == null) {
             return depth;
         }
@@ -30,17 +30,3 @@ class Solution {
         return Math.max(search(treeNode.left, depth + 1), search(treeNode.right, depth + 1));
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
